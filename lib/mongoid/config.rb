@@ -22,6 +22,7 @@ module Mongoid
     option :include_root_in_json, default: false
     option :include_type_for_serialization, default: false
     option :preload_models, default: false
+    option :validate_duplicate_fields, default: false
     option :raise_not_found_error, default: true
     option :scope_overwrite_exception, default: false
     option :use_activesupport_time_zone, default: true

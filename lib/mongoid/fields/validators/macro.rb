@@ -50,7 +50,8 @@ module Mongoid
         #
         # @since 3.0.0
         def validate_name(klass, name)
-          if Mongoid.destructive_fields.include?(name)
+          if Mongoid.destructive_fields.include?(name) ||
+              (Mongoid.validate_duplicate_fields && klass.fields.keys.include?(name.to_s))
             raise Errors::InvalidField.new(klass, name)
           end
         end
