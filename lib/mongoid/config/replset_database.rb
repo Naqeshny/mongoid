@@ -20,7 +20,8 @@ module Mongoid #:nodoc:
         options = reject{ |key, value| Config.blacklisted_options.include?(key.to_s) }
         options["logger"] = Mongoid::Logger.new
         connection = Mongo::ReplSetConnection.new(*(hosts.clone << options.symbolize_keys))
-
+        puts authenticating?
+        puts options.inspect!
         if authenticating?
           connection.add_auth(database, username, password)
           connection.apply_saved_authentication
